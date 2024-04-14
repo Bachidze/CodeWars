@@ -17,17 +17,30 @@ const fetchData2 = () =>
 Promise.all([fetchData(), fetchData2()]).then(([users, todos]) => {
   console.log(users);
   console.log(todos);
-  displayData(users);
+  displayData(users, todos);
 });
 
-function displayData(data) {
-  cont.innerHTML = data.map(
-    (el) => `
+function displayData(users, todos) {
+  const usersHTML = users.map(
+    (user) => `
       <div>
-        <h2>ID: ${el.id}</h2>
-        <h2>User ID: ${el.userId}</h2>
-        <h2>Title: ${el.title}</h2> <!-- Assuming there is a 'title' property -->
+        <h2>User ID: ${user.id}</h2>
+        <h2>Name: ${user.name}</h2>
+        <h2>Email: ${user.email}</h2>
       </div>
     `
-  ).join(''); 
+  ).join('');
+
+  const todosHTML = todos.map(
+    (todo) => `
+      <div>
+        <h2>Todo ID: ${todo.id}</h2>
+        <h2>User ID: ${todo.userId}</h2>
+        <h2>Title: ${todo.title}</h2>
+        <h2>Completed: ${todo.completed ? 'Yes' : 'No'}</h2>
+      </div>
+    `
+  ).join('');
+
+  cont.innerHTML = usersHTML + todosHTML;
 }
