@@ -36,7 +36,7 @@ async function countWordLength(){
     const readRandomCreatedFile = await fs.readFile('random.txt','utf-8')
     console.log(readRandomCreatedFile)
 
-    const randomTxtWordsLEngth = readRandomCreatedFile.split(' ').length
+    const randomTxtWordsLEngth = readRandomCreatedFile.trim().split(' ').length
     console.log(randomTxtWordsLEngth)
 }
 countWordLength() */
