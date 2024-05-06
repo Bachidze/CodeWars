@@ -43,19 +43,26 @@ server1.listen(3000, () => {
 }); */
 
 // Task 2
-const server2 = http.createServer((req, res) => {
+
+
+const server2 = http.createServer(async (req, res) => {
     const parsedUrl = url.parse(req.url);
     const path = parsedUrl.pathname;
 
     if (path === '/movie') {
-        const movie = {
-            title: 'Random Movie',
-            genre: 'Action',
-            director: 'John Doe',
-            year: '2024'
-        };
-        res.setHeader('Content-Type', 'application/json');
-        res.end(JSON.stringify(movie));
+        try {
+            const response = await fetch('https://api.example.com/random/movie');
+            if (response.ok) {
+                const movie = await response.json();
+                res.setHeader('Content-Type', 'application/json');
+                res.end(JSON.stringify(movie));
+            } else {
+                throw new Error('Failed to fetch random movie');
+            }
+        } catch (error) {
+         
+            res.end('Internal Server Error');
+        }
     } else if (path === '/number') {
         const randomNumber = Math.floor(Math.random() * 1000) + 1;
         res.setHeader('Content-Type', 'text/plain');
