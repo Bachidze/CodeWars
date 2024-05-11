@@ -1,0 +1,24 @@
+[
+  {},
+  {
+    "id": 1,
+    "cost": "9000",
+    "destination": "MacIOS",
+    "category": "laptop",
+    "createdAt": "2024-05-11T11:36:44.641Z"
+  },
+  {
+    "id": 2,
+    "cost": "18000",
+    "destination": "forShopping",
+    "category": "Shopping",
+    "createdAt": "2024-05-11T11:45:32.902Z"
+  },
+  {
+    "id": 3,
+    "cost": "7500",
+    "destination": "ForToyotaPriusC",
+    "category": "car",
+    "createdAt": "2024-05-11T11:48:12.481Z"
+  }
+]
